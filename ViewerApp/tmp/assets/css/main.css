@@ -1,0 +1,153 @@
+@charset 'utf-8';
+:root {
+  color-scheme: light dark;
+  --main-color: #FFF;
+  --main-theme-color: #17bcdf;
+  --main-results-color: #d9e0e7;
+  --size-sidebar: 170px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --main-color: #202e3d;
+  }
+}
+/*-----------------------------------
+共通
+-----------------------------------*/
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+
+  -webkit-user-select: none;
+          user-select: none;
+}
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background-color: transparent;
+}
+body {
+  font-size: 85%;
+  font-family: arial, '游ゴシック Medium', '游ゴシック体', 'Yu Gothic Medium', YuGothic, 'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+  color: #333;
+  font-feature-settings: "palt";
+  /*background-color: #2d353c;*/
+  background-color: var(--main-color);
+  /*background-color: transparent;*/
+  position: relative;
+  z-index: 0;
+  display: flex;
+}
+
+a:hover {
+  opacity: 0.6;
+}
+
+#img-area {
+  flex: 1 1 0;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  padding: 0;
+  overflow: hidden !important;
+}
+#img-area #img-loading {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  opacity: 1;
+}
+#img-area #img-loading img {
+  width: 50px;
+  height: auto;
+}
+#img-area #article-container {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+#img-area #article-container .img {
+  display: flex;
+  /*flex: 1 1 auto;*/
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: relative;
+  transform-origin: center;
+  opacity: 0;
+  box-shadow: 0 0 4vw 1px rgba(0, 0, 0, 0.1);
+}
+#img-area #article-container .img img {
+  margin: 0;
+  padding: 0;
+  width: auto;
+  height: 100%;
+  /*width: 100%*/
+  /*height: auto;*/
+  pointer-events: none;
+  -webkit-user-select: none;
+  user-select: none;
+  image-rendering: pixelated;
+}
+
+
+#img-area #article-container #article-items {
+  top: 0;
+  position: absolute;
+  z-index: 1;
+  opacity: 1;
+  transition: opacity 0.5s eae;
+}
+#img-area #article-container #article-items .article-item {
+  position: absolute;
+  z-index: 2;
+  box-shadow: none;
+  transition: all ease 0.2s;
+  border: 5px solid transparent;
+  box-sizing: border-box;
+  border: 5px solid #E91E63;
+}
+.animated #img-area #article-container #article-items .article-item {
+  transition: border ease 0.3s 1.5s;
+  border-color: transparent;
+}
+#img-area #article-container #article-items .article-item.action-hover {
+/*#img-area #article-container #article-items .article-item:hover {*/
+  background: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  border-color: red;
+  transition: all ease 0.2s;
+}
+
+.animated #img-area #img-loading {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+.animated #img-area #article-container .img {
+  opacity: 1;
+  transition: transform 0.5s ease, opacity 0.3s ease-in-out;
+}
